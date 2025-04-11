@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ToC_Tutorial</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#creating-a-table-of-contents-toc-in-google-colab"
+id="toc-creating-a-table-of-contents-toc-in-google-colab">Creating a
+Table of Contents (ToC) in Google Colab</a>
+<ul>
+<li><a href="#method-1---using-colabs-built-in-toc-sidebar"
+id="toc-method-1---using-colabs-built-in-toc-sidebar">Method 1 - Using
+Colab’s Built-in ToC Sidebar</a></li>
+<li><a href="#method-2-manually-creating-a-clickable-toc-with-markdown"
+id="toc-method-2-manually-creating-a-clickable-toc-with-markdown">Method
+2: Manually Creating a Clickable ToC with Markdown</a></li>
+<li><a
+href="#method-3-converting-jupyter-notebook-to-html-with-table-of-contents-using-pandoc-in-google-colab"
+id="toc-method-3-converting-jupyter-notebook-to-html-with-table-of-contents-using-pandoc-in-google-colab">Method
+3: Converting Jupyter Notebook to HTML with Table of Contents Using
+Pandoc in Google Colab</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="creating-a-table-of-contents-toc-in-google-colab">Creating a
+Table of Contents (ToC) in Google Colab</h1>
+<h2 id="method-1---using-colabs-built-in-toc-sidebar">Method 1 - Using
+Colab’s Built-in ToC Sidebar</h2>
+<p>Best for navigation within Colab but won’t persist in an HTML
+export.</p>
+<ol type="1">
+<li><p>Open your Google Colab notebook.</p></li>
+<li><p>Use Markdown headings (#, ##, ###, etc.) for sections.
+Example:</p></li>
+</ol>
+<pre><code># Introduction
+## Data Cleaning
+### Feature Engineering</code></pre>
+<ol start="3" type="1">
+<li><p>Click on “View” → “Table of contents” in the top menu.</p></li>
+<li><p>A ToC will appear in the left sidebar.</p></li>
+</ol>
+<p>Limitation: This ToC disappears when exporting to HTML.</p>
+<h2 id="method-2-manually-creating-a-clickable-toc-with-markdown">Method
+2: Manually Creating a Clickable ToC with Markdown</h2>
+<p>Best for small projects where you manually link sections.</p>
+<ol type="1">
+<li>At the top of your notebook, add a manual Table of Contents using
+Markdown with links:</li>
+</ol>
+<pre><code>## Table of Contents  
+- [Introduction](#introduction)  
+- [Data Cleaning](#data-cleaning)  
+- [Feature Engineering](#feature-engineering)  
+</code></pre>
+<ol start="2" type="1">
+<li>Define section headings exactly as referenced in links:</li>
+</ol>
+<pre><code>## Introduction  
+Some text here...
+
+## Data Cleaning  
+More content...
+
+## Feature Engineering  
+More content...</code></pre>
+<ol start="3" type="1">
+<li>These links will be clickable in Colab and in an exported HTML
+file.</li>
+</ol>
+<p>Limitation: You must manually update the links if section names
+change.</p>
+<h2
+id="method-3-converting-jupyter-notebook-to-html-with-table-of-contents-using-pandoc-in-google-colab">Method
+3: Converting Jupyter Notebook to HTML with Table of Contents Using
+Pandoc in Google Colab</h2>
+<ol type="1">
+<li>Install Pandoc in Google Colab</li>
+</ol>
+<ul>
+<li><p>We will start by installing Pandoc within Google Colab. This
+eliminates the need for any local installations.</p></li>
+<li><p>Open a new Google Colab notebook (Go to Colab).</p></li>
+<li><p>Install Pandoc using the following command in a Colab
+cell:</p></li>
+</ul>
+<pre><code>!apt-get install pandoc</code></pre>
+<p><strong>Explanation:</strong> This command will install Pandoc in
+your Colab environment. The ! at the start of the command indicates that
+this is a system-level command to be executed in the Colab
+environment.</p>
+<ol start="2" type="1">
+<li>Upload the Jupyter Notebook (.ipynb) to Colab Next, you will upload
+your Jupyter Notebook to Colab so it can be processed.</li>
+</ol>
+<p>In your Colab notebook, run the following code to open an upload
+dialog and select your .ipynb file:</p>
+<pre><code>from google.colab import files
+uploaded = files.upload()</code></pre>
+<p>Choose the Jupyter Notebook (.ipynb) file from your local machine to
+upload it to Colab.</p>
+<ol start="3" type="1">
+<li>Convert .ipynb to Markdown</li>
+</ol>
+<p>Now, we will convert the uploaded .ipynb file to a Markdown (.md)
+file using the nbconvert tool, which is included in Colab.</p>
+<p>First, run the following command to convert the notebook to
+markdown:</p>
+<pre><code>!jupyter nbconvert --to markdown your_notebook.ipynb</code></pre>
+<p><strong>Explanation:</strong> This command uses the nbconvert tool to
+convert the .ipynb file into a Markdown .md file. Replace
+your_notebook.ipynb with the name of your uploaded file.</p>
+<ol start="4" type="1">
+<li>Convert Markdown to HTML with Table of Contents Once you have the
+Markdown file, use Pandoc to convert it to an HTML file with a Table of
+Contents.</li>
+</ol>
+<p>Run the following command to perform the conversion:</p>
+<pre><code>!pandoc --toc -s your_notebook.md -o your_notebook_with_toc.html</code></pre>
+<p>Explanation:</p>
+<p>–toc: Generates a Table of Contents in the HTML output.</p>
+<p>-s: Ensures the document is standalone (including HTML headers).</p>
+<p>your_notebook.md: The input Markdown file.</p>
+<p>your_notebook_with_toc.html: The output HTML file that includes the
+Table of Contents.</p>
+<ol start="5" type="1">
+<li>Download the HTML File Once the conversion is complete, download the
+HTML file to your local machine.</li>
+</ol>
+<p>Run the following command to download the generated HTML file:</p>
+<pre><code>from google.colab import files
+files.download(&#39;your_notebook_with_toc.html&#39;)</code></pre>
+<p><strong>Explanation:</strong> This code will allow you to download
+the converted HTML file directly from Colab to your local machine.</p>
+<p>Or</p>
+<p>In case, if this does not work, you can follow the below steps in
+your jupyter terminal.</p>
+<ol type="1">
+<li>Install pandoc from the installer and save the path into your
+system’s environment variables.</li>
+<li>Restart the command prompt or pc.</li>
+<li>Verify Pandoc Installation:</li>
+</ol>
+<pre><code>pandoc --version</code></pre>
+<ol start="4" type="1">
+<li>Convert your .ipynb notebook to markdown</li>
+</ol>
+<pre><code>jupyter nbconvert --to markdown your_notebook.ipynb
+</code></pre>
+<p><strong>Note</strong>: If this command does not work, try copy the
+path of your notebook and paste at the place of your
+your_notebook.ipynb</p>
+<p>For Example:</p>
+<pre><code>jupyter nbconvert --to markdown &quot;C:\your_path\ToC_Tutorial.ipynb&quot;</code></pre>
+<ol start="5" type="1">
+<li>Convert Markdown (.md) to HTML with Table of Contents (ToC):</li>
+</ol>
+<ul>
+<li>Use Pandoc to convert the Markdown file to HTML and include a Table
+of Contents (ToC):</li>
+</ul>
+<pre><code>pandoc --toc -s your_notebook.md -o your_notebook_with_toc.html</code></pre>
+<p>or</p>
+<pre><code>&quot;C:\your_path\your_notebook.md&quot; -o &quot;C:\your_path\ToC_Tutorial.html&quot; --toc --standalone</code></pre>
+<p>Replace your_notebook.md with the Markdown file you generated in Step
+4. The output will be an HTML file named
+your_notebook_with_toc.html.</p>
+</body>
+</html>
